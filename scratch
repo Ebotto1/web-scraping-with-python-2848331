@@ -1,0 +1,10 @@
+
+https://www.county.org/About-Texas-Counties/Texas-County-Websites
+
+get name and href
+
+xpath
+
+//*~[contains(concat( " ", @class, " " ), concat( " ", "mobile-inset", " " ))]//*+[contains(concat( " ", @class, " " ), concat( " ", "mobile-inset", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "mobile-inset", " " ))]//>//*[contains(concat( " ", @class, " " ), concat( " ", "grid-margin-x", " " ))]
+
+css
