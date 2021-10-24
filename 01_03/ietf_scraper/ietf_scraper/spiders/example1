@@ -17,3 +17,48 @@ def parse(self, response):
 
             #yield or give the scraped info to scrapy
             yield scraped_info
+
+
+import scrapy
+
+
+class CtaspiderSpider(scrapy.Spider):
+    name = 'ctaSpider'
+    allowed_domains = ['county.org']
+    start_urls = ['https://www.county.org/About-Texas-Counties/Texas-County-Websites/']
+
+    def parse(self, response):
+        #Extracting the content using css selectors
+        county = response.css('.large-15 a::text').get()
+        clink = response.css('.large-15 a').attrib['href']}
+        
+        #Give the extracted content row wise
+        for item in county(county, clink):
+                scraped_info = {
+                        'county' : item[0],
+                        'clink' : item[1],
+                    }
+                
+         #yield or give the scraped info to scrapy
+         yield scraped_info
+------
+                
+def parse(self, response):
+        #Extracting the content using css selectors
+        titles = response.css('.title.may-blank::text').extract()
+        votes = response.css('.score.unvoted::text').extract()
+        times = response.css('time::attr(title)').extract()
+        comments = response.css('.comments::text').extract()
+       
+        #Give the extracted content row wise
+        for item in zip(titles,votes,times,comments):
+            #create a dictionary to store the scraped info
+            scraped_info = {
+                'title' : item[0],
+                'vote' : item[1],
+                'created_at' : item[2],
+                'comments' : item[3],
+            }
+
+            #yield or give the scraped info to scrapy
+            yield scraped_info
