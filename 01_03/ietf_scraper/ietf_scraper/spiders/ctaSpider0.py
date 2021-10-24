@@ -1,3 +1,6 @@
+import scrapy
+
+
 class CtaspiderSpider(scrapy.Spider):
     name = 'ctaSpider'
     allowed_domains = ['county.org']
