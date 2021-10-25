@@ -7,17 +7,19 @@ class CtaspiderSpider(scrapy.Spider):
     start_urls = ['https://www.county.org/About-Texas-Counties/Texas-County-Websites/']
 
     def parse(self, response):
-      county = response.css('.large-15 a::text').get()
-      clink = response.css('.large-15 a').attrib['href']}  
-                
-                
-    #Give the extracted content row wise
-    for item in counties(county, clink):
-        #create a dictionary to store the scraped info
-        scraped_info = {
-            'county' : item[0],
-            'clink' : item[1],
-        }
+        counties = response.css('.large-15')
+        county = response.css('.large-15 a::text').get()
+        clink = response.css('.large-15 a').attrib['href']
+        
+        # Give the extracted content row wise
+        for item in counties(county, clink):
+            scraped_info = {
+                'county': item[0],
+                'clink': item[1],
+            }
+            yield scraped_info
+            
+            
 #scrapy startproject ctaspider <website>
 #scrapy genspider
 #scrapy runspider ctaSpider.py -o cta_out.json -t json
