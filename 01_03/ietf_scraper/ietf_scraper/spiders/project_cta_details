@@ -1,0 +1,8 @@
+Site = Texas Association of Counties
+URL = https://www.county.org/About-Texas-Counties/Texas-County-Websites
+Objective = retrieve each texas county name and URL.   
+Content (CSS)
+  Main content block = .large-15 a 
+  county name = response.css('.large-15 a::text').get()
+  county url = response.css('.large-15 a').attrib['href']
+  
