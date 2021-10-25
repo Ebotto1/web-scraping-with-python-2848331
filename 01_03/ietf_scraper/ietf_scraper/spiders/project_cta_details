@@ -6,3 +6,5 @@ Content (CSS)
   county name = response.css('.large-15 a::text').get()
   county url = response.css('.large-15 a').attrib['href']
   
+>>> import scrapy_gui
+>>> scrapy_gui.open_browser()
