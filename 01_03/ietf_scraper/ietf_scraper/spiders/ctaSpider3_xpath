@@ -1,0 +1,14 @@
+import scrapy
+
+
+class CtaspiderSpider(scrapy.Spider):
+    name = 'ctaSpider'
+    allowed_domains = ['county.org']
+    start_urls = ['https://www.county.org/About-Texas-Counties/Texas-County-Websites/']
+
+    def parse(self, response):
+        # title = response.css('span.title::text').get()
+        county = response.xpath('//p/a/text()').get()
+        #clink = response.xpath('//p/a').get()
+
+        return {"County":county}
