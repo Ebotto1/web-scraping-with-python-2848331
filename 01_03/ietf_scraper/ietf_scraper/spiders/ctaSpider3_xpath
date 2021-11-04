@@ -9,6 +9,6 @@ class CtaspiderSpider(scrapy.Spider):
     def parse(self, response):
         # title = response.css('span.title::text').get()
         county = response.xpath('//p/a/text()').get()
-        #clink = response.xpath('//p/a').get()
+        clink = response.xpath('//p/a/@href').get()
 
         return {"County":county}
