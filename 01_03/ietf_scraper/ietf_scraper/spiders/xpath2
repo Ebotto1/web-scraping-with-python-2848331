@@ -1,5 +1,5 @@
 import scrapy
-from formds.items import SecformD
+#from formds.items import SecformD
 
 
 class CtaspiderSpider(scrapy.Spider):
@@ -8,9 +8,13 @@ class CtaspiderSpider(scrapy.Spider):
     start_urls = ['https://www.county.org/About-Texas-Counties/Texas-County-Websites/']
 
     def parse(self, response):
+
         for item in response.xpath('//p'):
-            county = item.xpath('//p/a/text()').extract_first()
-            clink = item.xpath('//p/a/@href').extract_first()
-            yield {"County": county, "CLink": clink}
+            #items = []
 
+            county = item.xpath('//p/a/text()').extract()
+            clink = item.xpath('//p/a/@href').extract()
 
+        yield {"County": county, "Link": clink}
+
+       
