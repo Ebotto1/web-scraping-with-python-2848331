@@ -15,3 +15,9 @@ Content (CSS)
 >>> import scrapy_gui
 >>> scrapy_gui.open_browser()
 scrapy shell https://www.county.org/About-Texas-Counties/Texas-County-Websites
+
+----------
+scrapy shell
+fetch('https://www.county.org/About-Texas-Counties/Texas-County-Websites')
+
+
